@@ -1,4 +1,29 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://effortless-sunshine-054915.netlify.app/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Pi-hsien Chen - Official Website'
 theme = 'ananke'
+
+[languages]
+  [languages.en]
+    title = "Pi-hsien Chen"
+    weight = 1
+    languageName = "English"
+  [languages.de]
+    title = "Pi-hsien Chen"
+    weight = 2
+    languageName = "Deutsch"
+  [languages.fr]
+    title = "Pi-hsien Chen"
+    weight = 3
+    languageName = "Français"
+  [languages.zh]
+    title = "陈必先"
+    weight = 4
+    languageName = "中文"
+  [languages.zh-tw]
+    title = "陳必先"
+    weight = 5
+    languageName = "繁體中文"
+
+[params]
+  description = "Official website of Pi-hsien Chen"
