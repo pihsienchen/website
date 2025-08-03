@@ -1,0 +1,166 @@
+{{ define "main" }}
+<div class="composer-container">
+  <div class="container">
+    <header class="page-header">
+      <h1 class="page-title">{{ .Title }}</h1>
+      <p class="page-description">{{ .Description }}</p>
+    </header>
+
+    {{ $composerName := .Title }}
+    {{ $composerRecordings := slice }}
+    {{ range $recordingKey, $recording := .Site.Data.recordings.recordings }}
+      {{ if eq $recording.composer $composerName }}
+        {{ $composerRecordings = $composerRecordings | append $recording }}
+      {{ end }}
+    {{ end }}
+    
+    {{ if $composerRecordings }}
+      <div class="composer-recordings">
+        <h2 class="section-title">
+          {{ if eq .Site.Language.Lang "de" }}
+            Verfügbare Aufnahmen
+          {{ else if eq .Site.Language.Lang "fr" }}
+            Enregistrements Disponibles
+          {{ else if eq .Site.Language.Lang "zh" }}
+            可用录音
+          {{ else if eq .Site.Language.Lang "zh-tw" }}
+            可用錄音
+          {{ else }}
+            Available Recordings
+          {{ end }}
+        </h2>
+        
+        <div class="recordings-grid">
+          {{ range $composerRecordings }}
+            <div class="recording-card{{ if .featured }} featured{{ end }}">
+              <div class="recording-header">
+                <h3 class="recording-title">{{ .title }}</h3>
+                {{ if .featured }}
+                  <span class="featured-badge">
+                    {{ if eq $.Site.Language.Lang "de" }}
+                      Empfohlen
+                    {{ else if eq $.Site.Language.Lang "fr" }}
+                      Recommandé
+                    {{ else if eq $.Site.Language.Lang "zh" }}
+                      推荐
+                    {{ else if eq $.Site.Language.Lang "zh-tw" }}
+                      推薦
+                    {{ else }}
+                      Featured
+                    {{ end }}
+                  </span>
+                {{ end }}
+              </div>
+              
+              <div class="recording-meta">
+                <span class="recording-year">{{ .year }}</span>
+                <span class="recording-duration">{{ .duration }}</span>
+                {{ if .album }}
+                  <span class="recording-album">{{ .album }}</span>
+                {{ end }}
+              </div>
+              
+              {{ if .description }}
+                <p class="recording-description">{{ .description }}</p>
+              {{ end }}
+              
+              {{ if .orchestra }}
+                <div class="recording-performers">
+                  <strong>
+                    {{ if eq $.Site.Language.Lang "de" }}
+                      Orchester:
+                    {{ else if eq $.Site.Language.Lang "fr" }}
+                      Orchestre:
+                    {{ else if eq $.Site.Language.Lang "zh" }}
+                      乐团:
+                    {{ else if eq $.Site.Language.Lang "zh-tw" }}
+                      樂團:
+                    {{ else }}
+                      Orchestra:
+                    {{ end }}
+                  </strong> {{ .orchestra }}
+                  {{ if .conductor }}
+                    <br><strong>
+                      {{ if eq $.Site.Language.Lang "de" }}
+                        Dirigent:
+                      {{ else if eq $.Site.Language.Lang "fr" }}
+                        Chef d'orchestre:
+                      {{ else if eq $.Site.Language.Lang "zh" }}
+                        指挥:
+                      {{ else if eq $.Site.Language.Lang "zh-tw" }}
+                        指揮:
+                      {{ else }}
+                        Conductor:
+                      {{ end }}
+                    </strong> {{ .conductor }}
+                  {{ end }}
+                </div>
+              {{ end }}
+              
+              {{ if .files }}
+                <div class="recording-audio">
+                  {{ if .files.mp3 }}
+                    <audio controls preload="none">
+                      <source src="{{ .files.mp3 }}" type="audio/mpeg">
+                      {{ if .files.ogg }}
+                        <source src="{{ .files.ogg }}" type="audio/ogg">
+                      {{ end }}
+                      {{ if eq $.Site.Language.Lang "de" }}
+                        Ihr Browser unterstützt das Audio-Element nicht.
+                      {{ else if eq $.Site.Language.Lang "fr" }}
+                        Votre navigateur ne prend pas en charge l'élément audio.
+                      {{ else if eq $.Site.Language.Lang "zh" }}
+                        您的浏览器不支持音频元素。
+                      {{ else if eq $.Site.Language.Lang "zh-tw" }}
+                        您的瀏覽器不支援音訊元素。
+                      {{ else }}
+                        Your browser does not support the audio element.
+                      {{ end }}
+                    </audio>
+                  {{ end }}
+                  
+                  {{ if and .download_enabled .files.mp3 }}
+                    <a href="{{ .files.mp3 }}" download class="download-link">
+                      {{ if eq $.Site.Language.Lang "de" }}
+                        Herunterladen
+                      {{ else if eq $.Site.Language.Lang "fr" }}
+                        Télécharger
+                      {{ else if eq $.Site.Language.Lang "zh" }}
+                        下载
+                      {{ else if eq $.Site.Language.Lang "zh-tw" }}
+                        下載
+                      {{ else }}
+                        Download
+                      {{ end }}
+                    </a>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    {{ end }}
+
+    <div class="page-body">
+      {{ .Content }}
+    </div>
+
+    <div class="composer-navigation">
+      <a href="{{ "recordings" | relLangURL }}" class="back-link">
+        {{ if eq .Site.Language.Lang "de" }}
+          ← Zurück zu allen Aufnahmen
+        {{ else if eq .Site.Language.Lang "fr" }}
+          ← Retour à tous les enregistrements
+        {{ else if eq .Site.Language.Lang "zh" }}
+          ← 返回所有录音
+        {{ else if eq .Site.Language.Lang "zh-tw" }}
+          ← 返回所有錄音
+        {{ else }}
+          ← Back to All Recordings
+        {{ end }}
+      </a>
+    </div>
+  </div>
+</div>
+{{ end }}

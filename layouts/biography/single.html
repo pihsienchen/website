@@ -1,0 +1,162 @@
+{{ define "main" }}
+<div class="biography-container">
+  <div class="container">
+    <!-- Header -->
+    <header class="page-header">
+      <h1 class="page-title">{{ .Title }}</h1>
+      <p class="page-description">{{ .Description }}</p>
+    </header>
+
+    <!-- New Left-Side Timeline -->
+    <div class="timeline-wrapper">
+      <div class="timeline-line"></div>
+      <div class="timeline-progress"></div>
+      
+      <!-- Timeline Events -->
+      <div class="timeline-events">
+        
+        <!-- 1950: Birth in Taipei -->
+        <div class="timeline-event" data-year="1950" data-position="0">
+          <div class="timeline-dot">
+            <div class="dot-inner"></div>
+          </div>
+          <div class="timeline-card">
+            <div class="card-date">1950</div>
+            <div class="card-image">
+              <div class="placeholder-image">🎹</div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Birth in Taipei</h3>
+              <p class="card-description">Pi-hsien Chen was born in Taipei, Taiwan, showing early signs of exceptional musical talent that would shape a remarkable career spanning decades.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1960: Flight to Germany -->
+        <div class="timeline-event" data-year="1960" data-position="28.57">
+          <div class="timeline-dot">
+            <div class="dot-inner"></div>
+          </div>
+          <div class="timeline-card">
+            <div class="card-date">1960</div>
+            <div class="card-image">
+              <div class="placeholder-image">✈️</div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Flight to Germany</h3>
+              <p class="card-description">At age 10, Pi-hsien moved to Germany to pursue formal musical education, beginning a transformative journey in European classical music tradition.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1972: ARD Competition -->
+        <div class="timeline-event" data-year="1972" data-position="62.86">
+          <div class="timeline-dot">
+            <div class="dot-inner"></div>
+          </div>
+          <div class="timeline-card">
+            <div class="card-date">1972</div>
+            <div class="card-image">
+              <div class="placeholder-image">🏆</div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">ARD Competition 1st Prize</h3>
+              <p class="card-description">Won first prize at the prestigious ARD International Music Competition, marking a significant breakthrough and recognition of exceptional pianistic abilities.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1972: Queen Elisabeth Competition -->
+        <div class="timeline-event" data-year="1972" data-position="65.71">
+          <div class="timeline-dot">
+            <div class="dot-inner"></div>
+          </div>
+          <div class="timeline-card">
+            <div class="card-date">1972</div>
+            <div class="card-image">
+              <div class="placeholder-image">👑</div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Queen Elisabeth Competition Finalist</h3>
+              <p class="card-description">Reached the finals of the Queen Elisabeth International Music Competition in Brussels, establishing international recognition and artistic credibility.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1985: Goldberg Variations -->
+        <div class="timeline-event" data-year="1985" data-position="100">
+          <div class="timeline-dot">
+            <div class="dot-inner"></div>
+          </div>
+          <div class="timeline-card">
+            <div class="card-date">1985</div>
+            <div class="card-image">
+              <div class="placeholder-image">💿</div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Famous Goldberg Variations Released</h3>
+              <p class="card-description">Released the acclaimed recording of Bach's Goldberg Variations, showcasing interpretive mastery and establishing a definitive artistic statement in the classical recording repertoire.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const timelineWrapper = document.querySelector('.timeline-wrapper');
+  const timelineProgress = document.querySelector('.timeline-progress');
+  const timelineEvents = document.querySelectorAll('.timeline-event');
+  
+  if (!timelineWrapper || !timelineProgress) return;
+
+  // Intersection Observer for timeline events
+  const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -20% 0px',
+    threshold: 0.5
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const event = entry.target;
+      const card = event.querySelector('.timeline-card');
+      const dot = event.querySelector('.timeline-dot');
+      
+      if (entry.isIntersecting) {
+        event.classList.add('active');
+        card.classList.add('animate-in');
+        dot.classList.add('pulse');
+      } else {
+        event.classList.remove('active');
+        card.classList.remove('animate-in');
+        dot.classList.remove('pulse');
+      }
+    });
+  }, observerOptions);
+
+  timelineEvents.forEach(event => {
+    observer.observe(event);
+  });
+
+  // Scroll progress indicator
+  function updateProgress() {
+    const rect = timelineWrapper.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const wrapperHeight = timelineWrapper.offsetHeight;
+    
+    const scrolled = Math.max(0, -rect.top);
+    const scrollableHeight = wrapperHeight - windowHeight;
+    const progress = Math.min(100, (scrolled / scrollableHeight) * 100);
+    
+    timelineProgress.style.height = `${progress}%`;
+  }
+
+  window.addEventListener('scroll', updateProgress);
+  updateProgress();
+});
+</script>
+{{ end }}

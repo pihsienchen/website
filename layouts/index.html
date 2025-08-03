@@ -1,0 +1,250 @@
+{{ define "main" }}
+<div class="homepage-container">
+  <!-- Language Dropdown -->
+  <div class="homepage-language-dropdown">
+    {{ partial "language-dropdown.html" (dict "Site" .Site "id" "homepage") }}
+  </div>
+  
+  <!-- Hero Section with Autogram -->
+  <section class="hero-section">
+    <div class="autogram-container">
+      {{ if or (eq .Site.Language.Lang "zh") (eq .Site.Language.Lang "zh-tw") }}
+        <img src="/images/pi-hsien-autogram-zh-placeholder.png" alt="{{ .Site.Title }}" class="autogram-signature">
+      {{ else }}
+        <img src="/images/pi-hsien-autogram-en-placeholder.png" alt="{{ .Site.Title }}" class="autogram-signature">
+      {{ end }}
+    </div>
+    
+    <!-- Main Navigation Menu -->
+    <nav class="main-navigation" id="main-nav">
+      <ul class="nav-menu">
+        {{ range .Site.Menus.main }}
+          <li class="nav-item">
+            <a href="{{ .URL | relLangURL }}" class="nav-link">{{ .Name }}</a>
+          </li>
+        {{ end }}
+      </ul>
+      
+      <!-- Language dropdown in sticky nav -->
+      <div class="sticky-nav-language">
+        {{ partial "language-dropdown.html" (dict "Site" .Site "id" "sticky") }}
+      </div>
+    </nav>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-arrows">
+        <div class="arrow-down"></div>
+        <div class="arrow-down"></div>
+        <div class="arrow-down"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Next Events Section -->
+  <section class="events-section" id="events">
+    <div class="container">
+      <h2 class="section-title">
+        {{ if eq .Site.Language.Lang "de" }}
+          Kommende Auftritte
+        {{ else if eq .Site.Language.Lang "fr" }}
+          Prochains Concerts
+        {{ else if eq .Site.Language.Lang "zh" }}
+          即将举行的音乐会
+        {{ else if eq .Site.Language.Lang "zh-tw" }}
+          即將舉行的音樂會
+        {{ else }}
+          Upcoming Concerts
+        {{ end }}
+      </h2>
+      
+      <div class="events-grid">
+        {{ if .Site.Data.events }}
+          {{ range .Site.Data.events.upcoming }}
+            <div class="event-tile">
+              <div class="event-date">
+                <span class="event-day">{{ dateFormat "02" .date }}</span>
+                <span class="event-month">{{ dateFormat "Jan" .date }}</span>
+                <span class="event-year">{{ dateFormat "2006" .date }}</span>
+              </div>
+              <div class="event-details">
+                <h3 class="event-venue">{{ index .venue $.Site.Language.Lang }}</h3>
+                <p class="event-location">{{ index .location $.Site.Language.Lang }}</p>
+                <p class="event-program">{{ index .program $.Site.Language.Lang }}</p>
+              </div>
+              {{ if .booking_url }}
+                <div class="event-booking">
+                  <a href="{{ .booking_url }}" class="booking-button" target="_blank">
+                    {{ if eq $.Site.Language.Lang "de" }}
+                      Tickets
+                    {{ else if eq $.Site.Language.Lang "fr" }}
+                      Billets
+                    {{ else if eq $.Site.Language.Lang "zh" }}
+                      购票
+                    {{ else if eq $.Site.Language.Lang "zh-tw" }}
+                      購票
+                    {{ else }}
+                      Book Tickets
+                    {{ end }}
+                  </a>
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+        {{ else }}
+          <!-- Placeholder events -->
+          <div class="event-tile">
+            <div class="event-date">
+              <span class="event-day">15</span>
+              <span class="event-month">Mar</span>
+              <span class="event-year">2025</span>
+            </div>
+            <div class="event-details">
+              <h3 class="event-venue">
+                {{ if eq .Site.Language.Lang "de" }}
+                  Musikverein Wien
+                {{ else if eq .Site.Language.Lang "fr" }}
+                  Salle Pleyel
+                {{ else if eq .Site.Language.Lang "zh" }}
+                  维也纳音乐厅
+                {{ else if eq .Site.Language.Lang "zh-tw" }}
+                  維也納音樂廳
+                {{ else }}
+                  Carnegie Hall
+                {{ end }}
+              </h3>
+              <p class="event-location">
+                {{ if eq .Site.Language.Lang "de" }}
+                  Wien, Österreich
+                {{ else if eq .Site.Language.Lang "fr" }}
+                  Paris, France
+                {{ else if eq .Site.Language.Lang "zh" }}
+                  维也纳，奥地利
+                {{ else if eq .Site.Language.Lang "zh-tw" }}
+                  維也納，奧地利
+                {{ else }}
+                  New York, USA
+                {{ end }}
+              </p>
+              <p class="event-program">
+                {{ if eq .Site.Language.Lang "de" }}
+                  Chopin: Nocturnes & Balladen
+                {{ else if eq .Site.Language.Lang "fr" }}
+                  Chopin: Nocturnes et Ballades
+                {{ else if eq .Site.Language.Lang "zh" }}
+                  肖邦：夜曲与叙事曲
+                {{ else if eq .Site.Language.Lang "zh-tw" }}
+                  蕭邦：夜曲與敘事曲
+                {{ else }}
+                  Chopin: Nocturnes & Ballades
+                {{ end }}
+              </p>
+            </div>
+            <div class="event-booking">
+              <a href="#" class="booking-button">
+                {{ if eq .Site.Language.Lang "de" }}
+                  Tickets
+                {{ else if eq .Site.Language.Lang "fr" }}
+                  Billets
+                {{ else if eq .Site.Language.Lang "zh" }}
+                  购票
+                {{ else if eq .Site.Language.Lang "zh-tw" }}
+                  購票
+                {{ else }}
+                  Book Tickets
+                {{ end }}
+              </a>
+            </div>
+          </div>
+          
+          <div class="event-tile">
+            <div class="event-date">
+              <span class="event-day">28</span>
+              <span class="event-month">Apr</span>
+              <span class="event-year">2025</span>
+            </div>
+            <div class="event-details">
+              <h3 class="event-venue">
+                {{ if eq .Site.Language.Lang "de" }}
+                  Berliner Philharmonie
+                {{ else if eq .Site.Language.Lang "fr" }}
+                  Philharmonie de Paris
+                {{ else if eq .Site.Language.Lang "zh" }}
+                  柏林爱乐厅
+                {{ else if eq .Site.Language.Lang "zh-tw" }}
+                  柏林愛樂廳
+                {{ else }}
+                  Royal Festival Hall
+                {{ end }}
+              </h3>
+              <p class="event-location">
+                {{ if eq .Site.Language.Lang "de" }}
+                  Berlin, Deutschland
+                {{ else if eq .Site.Language.Lang "fr" }}
+                  Paris, France
+                {{ else if eq .Site.Language.Lang "zh" }}
+                  柏林，德国
+                {{ else if eq .Site.Language.Lang "zh-tw" }}
+                  柏林，德國
+                {{ else }}
+                  London, UK
+                {{ end }}
+              </p>
+              <p class="event-program">
+                {{ if eq .Site.Language.Lang "de" }}
+                  Brahms: Klavierkonzert Nr. 2
+                {{ else if eq .Site.Language.Lang "fr" }}
+                  Brahms: Concerto pour piano n° 2
+                {{ else if eq .Site.Language.Lang "zh" }}
+                  勃拉姆斯：第二钢琴协奏曲
+                {{ else if eq .Site.Language.Lang "zh-tw" }}
+                  布拉姆斯：第二鋼琴協奏曲
+                {{ else }}
+                  Brahms: Piano Concerto No. 2
+                {{ end }}
+              </p>
+            </div>
+            <div class="event-booking">
+              <a href="#" class="booking-button">
+                {{ if eq .Site.Language.Lang "de" }}
+                  Tickets
+                {{ else if eq .Site.Language.Lang "fr" }}
+                  Billets
+                {{ else if eq .Site.Language.Lang "zh" }}
+                  购票
+                {{ else if eq .Site.Language.Lang "zh-tw" }}
+                  購票
+                {{ else }}
+                  Book Tickets
+                {{ end }}
+              </a>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Sticky Navigation JavaScript -->
+<script>
+window.addEventListener('scroll', function() {
+    const nav = document.getElementById('main-nav');
+    const heroSection = document.querySelector('.hero-section');
+    const heroHeight = heroSection.offsetHeight;
+    
+    if (window.scrollY > heroHeight * 0.7) {
+        nav.classList.add('sticky');
+    } else {
+        nav.classList.remove('sticky');
+    }
+});
+
+// Smooth scroll to events section
+document.querySelector('.scroll-indicator').addEventListener('click', function() {
+    document.getElementById('events').scrollIntoView({
+        behavior: 'smooth'
+    });
+});
+</script>
+{{ end }}

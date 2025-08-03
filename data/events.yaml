@@ -1,0 +1,64 @@
+# Upcoming Concert Events
+upcoming:
+  - date: "2025-03-15"
+    venue:
+      en: "Carnegie Hall"
+      de: "Musikverein Wien"
+      fr: "Salle Pleyel"
+      zh: "维也纳音乐厅"
+      zh-tw: "維也納音樂廳"
+    location:
+      en: "New York, USA"
+      de: "Wien, Österreich"
+      fr: "Paris, France"
+      zh: "维也纳，奥地利"
+      zh-tw: "維也納，奧地利"
+    program:
+      en: "Chopin: Nocturnes & Ballades"
+      de: "Chopin: Nocturnes & Balladen"
+      fr: "Chopin: Nocturnes et Ballades"
+      zh: "肖邦：夜曲与叙事曲"
+      zh-tw: "蕭邦：夜曲與敘事曲"
+    booking_url: "https://www.carnegiehall.org"
+
+  - date: "2025-04-28"
+    venue:
+      en: "Royal Festival Hall"
+      de: "Berliner Philharmonie"
+      fr: "Philharmonie de Paris"
+      zh: "柏林爱乐厅"
+      zh-tw: "柏林愛樂廳"
+    location:
+      en: "London, UK"
+      de: "Berlin, Deutschland"
+      fr: "Paris, France"
+      zh: "柏林，德国"
+      zh-tw: "柏林，德國"
+    program:
+      en: "Brahms: Piano Concerto No. 2"
+      de: "Brahms: Klavierkonzert Nr. 2"
+      fr: "Brahms: Concerto pour piano n° 2"
+      zh: "勃拉姆斯：第二钢琴协奏曲"
+      zh-tw: "布拉姆斯：第二鋼琴協奏曲"
+    booking_url: "https://www.southbankcentre.co.uk"
+
+  - date: "2025-06-12"
+    venue:
+      en: "Sydney Opera House"
+      de: "Oper Sydney"
+      fr: "Opéra de Sydney"
+      zh: "悉尼歌剧院"
+      zh-tw: "雪梨歌劇院"
+    location:
+      en: "Sydney, Australia"
+      de: "Sydney, Australien"
+      fr: "Sydney, Australie"
+      zh: "悉尼，澳大利亚"
+      zh-tw: "雪梨，澳洲"
+    program:
+      en: "Debussy & Ravel: Impressionist Masterpieces"
+      de: "Debussy & Ravel: Impressionistische Meisterwerke"
+      fr: "Debussy et Ravel: Chefs-d'œuvre impressionnistes"
+      zh: "德彪西与拉威尔：印象派杰作"
+      zh-tw: "德布西與拉威爾：印象派傑作"
+    booking_url: "https://www.sydneyoperahouse.com"

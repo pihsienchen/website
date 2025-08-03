@@ -1,0 +1,91 @@
+{{ $id := .id | default "main" }}
+{{ $site := .Site }}
+<div class="language-dropdown">
+    <div class="language-selector">
+        <button class="language-toggle" id="languageToggle-{{ $id }}" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
+            <!-- Current language flag -->
+            {{ if eq $site.Language.Lang "de" }}
+                <span class="flag">🇩🇪</span>
+                <span class="lang-name">Deutsch</span>
+            {{ else if eq $site.Language.Lang "fr" }}
+                <span class="flag">🇫🇷</span>
+                <span class="lang-name">Français</span>
+            {{ else if eq $site.Language.Lang "zh" }}
+                <span class="flag">🇨🇳</span>
+                <span class="lang-name">中文</span>
+            {{ else if eq $site.Language.Lang "zh-tw" }}
+                <span class="flag">🇹🇼</span>
+                <span class="lang-name">繁體中文</span>
+            {{ else }}
+                <span class="flag">🇺🇸</span>
+                <span class="lang-name">English</span>
+            {{ end }}
+            <span class="dropdown-arrow">▼</span>
+        </button>
+        
+        <div class="language-menu" id="languageMenu-{{ $id }}">
+            {{ if hugo.IsMultilingual }}
+                {{ range $site.Languages }}
+                    {{ if ne $site.Language.Lang .Lang }}
+                        <a href="/{{ .Lang }}/" class="language-option" lang="{{ .Lang }}">
+                            {{ if eq .Lang "de" }}
+                                <span class="flag">🇩🇪</span>
+                                <span class="lang-text">Deutsch</span>
+                            {{ else if eq .Lang "fr" }}
+                                <span class="flag">🇫🇷</span>
+                                <span class="lang-text">Français</span>
+                            {{ else if eq .Lang "zh" }}
+                                <span class="flag">🇨🇳</span>
+                                <span class="lang-text">中文</span>
+                            {{ else if eq .Lang "zh-tw" }}
+                                <span class="flag">🇹🇼</span>
+                                <span class="lang-text">繁體中文</span>
+                            {{ else }}
+                                <span class="flag">🇺🇸</span>
+                                <span class="lang-text">English</span>
+                            {{ end }}
+                        </a>
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.getElementById('languageToggle-{{ $id }}');
+    const menu = document.getElementById('languageMenu-{{ $id }}');
+    
+    if (!toggle || !menu) {
+        console.error('Language dropdown elements not found for {{ $id }}');
+        return;
+    }
+    
+    toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        menu.classList.toggle('show');
+        
+        // Also update aria-expanded for accessibility
+        const isExpanded = menu.classList.contains('show');
+        toggle.setAttribute('aria-expanded', isExpanded);
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+            menu.classList.remove('show');
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+    
+    // Close dropdown on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            menu.classList.remove('show');
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+});
+</script>

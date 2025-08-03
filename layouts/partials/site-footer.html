@@ -1,0 +1,108 @@
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <!-- Copyright -->
+            <div class="footer-section">
+                <p class="copyright">
+                    &copy; {{ now.Year }} {{ .Site.Title }}. 
+                    {{ if eq .Site.Language.Lang "de" }}
+                        Alle Rechte vorbehalten.
+                    {{ else if eq .Site.Language.Lang "fr" }}
+                        Tous droits réservés.
+                    {{ else if eq .Site.Language.Lang "zh" }}
+                        版权所有。
+                    {{ else if eq .Site.Language.Lang "zh-tw" }}
+                        版權所有。
+                    {{ else }}
+                        All rights reserved.
+                    {{ end }}
+                </p>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h4 class="footer-title">
+                    {{ if eq .Site.Language.Lang "de" }}
+                        Schnellzugriff
+                    {{ else if eq .Site.Language.Lang "fr" }}
+                        Liens Rapides
+                    {{ else if eq .Site.Language.Lang "zh" }}
+                        快速链接
+                    {{ else if eq .Site.Language.Lang "zh-tw" }}
+                        快速連結
+                    {{ else }}
+                        Quick Links
+                    {{ end }}
+                </h4>
+                <ul class="footer-links">
+                    {{ range .Site.Menus.main }}
+                        <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
+                    {{ end }}
+                </ul>
+            </div>
+            
+            <!-- Contact -->
+            <div class="footer-section">
+                <h4 class="footer-title">
+                    {{ if eq .Site.Language.Lang "de" }}
+                        Kontakt
+                    {{ else if eq .Site.Language.Lang "fr" }}
+                        Contact
+                    {{ else if eq .Site.Language.Lang "zh" }}
+                        联系方式
+                    {{ else if eq .Site.Language.Lang "zh-tw" }}
+                        聯絡方式
+                    {{ else }}
+                        Contact
+                    {{ end }}
+                </h4>
+                <p class="footer-text">
+                    {{ if eq .Site.Language.Lang "de" }}
+                        Für Konzertanfragen und weitere Informationen
+                    {{ else if eq .Site.Language.Lang "fr" }}
+                        Pour les demandes de concerts et plus d'informations
+                    {{ else if eq .Site.Language.Lang "zh" }}
+                        音乐会咨询和更多信息
+                    {{ else if eq .Site.Language.Lang "zh-tw" }}
+                        音樂會諮詢和更多資訊
+                    {{ else }}
+                        For concert inquiries and more information
+                    {{ end }}
+                </p>
+            </div>
+            
+            <!-- Social Media (if configured) -->
+            {{ if or .Site.Params.twitter .Site.Params.facebook .Site.Params.youtube .Site.Params.instagram }}
+            <div class="footer-section">
+                <h4 class="footer-title">
+                    {{ if eq .Site.Language.Lang "de" }}
+                        Folgen Sie uns
+                    {{ else if eq .Site.Language.Lang "fr" }}
+                        Suivez-nous
+                    {{ else if eq .Site.Language.Lang "zh" }}
+                        关注我们
+                    {{ else if eq .Site.Language.Lang "zh-tw" }}
+                        關注我們
+                    {{ else }}
+                        Follow Us
+                    {{ end }}
+                </h4>
+                <div class="social-links">
+                    {{ with .Site.Params.twitter }}
+                        <a href="{{ . }}" target="_blank" rel="noopener" aria-label="Twitter">Twitter</a>
+                    {{ end }}
+                    {{ with .Site.Params.facebook }}
+                        <a href="{{ . }}" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
+                    {{ end }}
+                    {{ with .Site.Params.youtube }}
+                        <a href="{{ . }}" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+                    {{ end }}
+                    {{ with .Site.Params.instagram }}
+                        <a href="{{ . }}" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+                    {{ end }}
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</footer>

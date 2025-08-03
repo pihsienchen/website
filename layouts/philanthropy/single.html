@@ -1,0 +1,317 @@
+{{ define "main" }}
+<div class="philanthropy-container">
+  <div class="container">
+    <!-- Header -->
+    <header class="page-header">
+      <h1 class="page-title">{{ .Title }}</h1>
+      <p class="page-description">{{ .Description }}</p>
+    </header>
+
+    <!-- Introduction -->
+    <div class="philanthropy-intro">
+      <p>
+        {{ if eq .Site.Language.Lang "de" }}
+          Pi-hsien Chen glaubt fest daran, dass Musik transformative Kraft besitzt und über kulturelle Grenzen hinweg verbindet. Ihre philanthropischen Bemühungen konzentrieren sich darauf, Musik als Werkzeug für Heilung, Bildung und sozialen Wandel zu nutzen, wobei sie sowohl lokale als auch internationale Organisationen unterstützt, die sich für die Verbesserung von Menschenleben einsetzen.
+        {{ else if eq .Site.Language.Lang "fr" }}
+          Pi-hsien Chen croit fermement au pouvoir transformateur de la musique et à sa capacité à transcender les frontières culturelles. Ses efforts philanthropiques se concentrent sur l'utilisation de la musique comme outil de guérison, d'éducation et de changement social, soutenant des organisations locales et internationales dédiées à l'amélioration de la vie humaine.
+        {{ else if eq .Site.Language.Lang "zh" }}
+          陈必先坚信音乐具有变革力量，能够跨越文化界限。她的慈善工作专注于将音乐作为治愈、教育和社会变革的工具，支持致力于改善人类生活的本地和国际组织。
+        {{ else if eq .Site.Language.Lang "zh-tw" }}
+          陳必先堅信音樂具有變革力量，能夠跨越文化界限。她的慈善工作專注於將音樂作為治癒、教育和社會變革的工具，支持致力於改善人類生活的本地和國際組織。
+        {{ else }}
+          Pi-hsien Chen firmly believes in music's transformative power and its ability to transcend cultural boundaries. Her philanthropic efforts focus on using music as a tool for healing, education, and social change, supporting both local and international organizations dedicated to improving human lives.
+        {{ end }}
+      </p>
+    </div>
+
+    <!-- Project Tiles -->
+    <div class="projects-section">
+      <h2 class="section-title">
+        {{ if eq .Site.Language.Lang "de" }}
+          Unterstützte Projekte
+        {{ else if eq .Site.Language.Lang "fr" }}
+          Projets Soutenus
+        {{ else if eq .Site.Language.Lang "zh" }}
+          支持的项目
+        {{ else if eq .Site.Language.Lang "zh-tw" }}
+          支持的項目
+        {{ else }}
+          Supported Projects
+        {{ end }}
+      </h2>
+      
+      <div class="tile-grid">
+        <!-- Ärzte ohne Grenzen / Doctors Without Borders -->
+        <div class="tile">
+          <div class="tile-image">
+            {{ if eq .Site.Language.Lang "de" }}
+              ÄoG
+            {{ else if eq .Site.Language.Lang "fr" }}
+              MSF
+            {{ else if eq .Site.Language.Lang "zh" }}
+              无国界医生
+            {{ else if eq .Site.Language.Lang "zh-tw" }}
+              無國界醫生
+            {{ else }}
+              MSF
+            {{ end }}
+          </div>
+          <div class="tile-content">
+            <h3 class="tile-title">
+              {{ if eq .Site.Language.Lang "de" }}
+                Ärzte ohne Grenzen
+              {{ else if eq .Site.Language.Lang "fr" }}
+                Médecins Sans Frontières
+              {{ else if eq .Site.Language.Lang "zh" }}
+                无国界医生组织
+              {{ else if eq .Site.Language.Lang "zh-tw" }}
+                無國界醫生組織
+              {{ else }}
+                Doctors Without Borders
+              {{ end }}
+            </h3>
+            <p class="tile-description">
+              {{ if eq .Site.Language.Lang "de" }}
+                Benefizkonzerte zur Unterstützung medizinischer Hilfe in Krisengebieten. Musik als Brücke der Solidarität und Heilung.
+              {{ else if eq .Site.Language.Lang "fr" }}
+                Concerts de bienfaisance pour soutenir l'aide médicale dans les zones de crise. La musique comme pont de solidarité et de guérison.
+              {{ else if eq .Site.Language.Lang "zh" }}
+                为支持危机地区医疗援助举办慈善音乐会。音乐作为团结和治愈的桥梁。
+              {{ else if eq .Site.Language.Lang "zh-tw" }}
+                為支持危機地區醫療援助舉辦慈善音樂會。音樂作為團結和治癒的橋樑。
+              {{ else }}
+                Benefit concerts supporting medical aid in crisis zones. Music as a bridge of solidarity and healing.
+              {{ end }}
+            </p>
+          </div>
+        </div>
+
+        <!-- NABU -->
+        <div class="tile">
+          <div class="tile-image">
+            {{ if eq .Site.Language.Lang "de" }}
+              NABU
+            {{ else if eq .Site.Language.Lang "fr" }}
+              NABU
+            {{ else if eq .Site.Language.Lang "zh" }}
+              德国自然保护联盟
+            {{ else if eq .Site.Language.Lang "zh-tw" }}
+              德國自然保護聯盟
+            {{ else }}
+              NABU
+            {{ end }}
+          </div>
+          <div class="tile-content">
+            <h3 class="tile-title">
+              {{ if eq .Site.Language.Lang "de" }}
+                NABU - Naturschutzbund Deutschland
+              {{ else if eq .Site.Language.Lang "fr" }}
+                NABU - Conservation de la Nature
+              {{ else if eq .Site.Language.Lang "zh" }}
+                NABU - 德国自然保护联盟
+              {{ else if eq .Site.Language.Lang "zh-tw" }}
+                NABU - 德國自然保護聯盟
+              {{ else }}
+                NABU - Nature Conservation
+              {{ end }}
+            </h3>
+            <p class="tile-description">
+              {{ if eq .Site.Language.Lang "de" }}
+                Konzerte im Freien zur Sensibilisierung für Umweltschutz. Verbindung von Natur und Musik für nachhaltige Zukunft.
+              {{ else if eq .Site.Language.Lang "fr" }}
+                Concerts en plein air pour sensibiliser à la protection environnementale. Unir nature et musique pour un avenir durable.
+              {{ else if eq .Site.Language.Lang "zh" }}
+                户外音乐会提高环保意识。将自然与音乐结合，创造可持续的未来。
+              {{ else if eq .Site.Language.Lang "zh-tw" }}
+                戶外音樂會提高環保意識。將自然與音樂結合，創造可持續的未來。
+              {{ else }}
+                Outdoor concerts raising environmental awareness. Connecting nature and music for sustainable future.
+              {{ end }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Bissau Project -->
+        <div class="tile">
+          <div class="tile-image">
+            {{ if eq .Site.Language.Lang "de" }}
+              Bissau
+            {{ else if eq .Site.Language.Lang "fr" }}
+              Bissau
+            {{ else if eq .Site.Language.Lang "zh" }}
+              比绍项目
+            {{ else if eq .Site.Language.Lang "zh-tw" }}
+              比紹項目
+            {{ else }}
+              Bissau
+            {{ end }}
+          </div>
+          <div class="tile-content">
+            <h3 class="tile-title">
+              {{ if eq .Site.Language.Lang "de" }}
+                Bissau Musikbildungsprojekt
+              {{ else if eq .Site.Language.Lang "fr" }}
+                Projet d'Éducation Musicale Bissau
+              {{ else if eq .Site.Language.Lang "zh" }}
+                比绍音乐教育项目
+              {{ else if eq .Site.Language.Lang "zh-tw" }}
+                比紹音樂教育項目
+              {{ else }}
+                Bissau Music Education Project
+              {{ end }}
+            </h3>
+            <p class="tile-description">
+              {{ if eq .Site.Language.Lang "de" }}
+                Musikunterricht für benachteiligte Kinder in Guinea-Bissau. Instrumente, Ausbildung und Hoffnung durch Musik.
+              {{ else if eq .Site.Language.Lang "fr" }}
+                Enseignement musical pour enfants défavorisés en Guinée-Bissau. Instruments, formation et espoir par la musique.
+              {{ else if eq .Site.Language.Lang "zh" }}
+                为几内亚比绍弱势儿童提供音乐教育。通过音乐提供乐器、培训和希望。
+              {{ else if eq .Site.Language.Lang "zh-tw" }}
+                為幾內亞比紹弱勢兒童提供音樂教育。通過音樂提供樂器、培訓和希望。
+              {{ else }}
+                Music education for underprivileged children in Guinea-Bissau. Providing instruments, training, and hope through music.
+              {{ end }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Music Therapy Programs -->
+        <div class="tile">
+          <div class="tile-image">
+            {{ if eq .Site.Language.Lang "de" }}
+              Therapie
+            {{ else if eq .Site.Language.Lang "fr" }}
+              Thérapie
+            {{ else if eq .Site.Language.Lang "zh" }}
+              音乐治疗
+            {{ else if eq .Site.Language.Lang "zh-tw" }}
+              音樂治療
+            {{ else }}
+              Therapy
+            {{ end }}
+          </div>
+          <div class="tile-content">
+            <h3 class="tile-title">
+              {{ if eq .Site.Language.Lang "de" }}
+                Musiktherapie-Programme
+              {{ else if eq .Site.Language.Lang "fr" }}
+                Programmes de Musicothérapie
+              {{ else if eq .Site.Language.Lang "zh" }}
+                音乐治疗项目
+              {{ else if eq .Site.Language.Lang "zh-tw" }}
+                音樂治療項目
+              {{ else }}
+                Music Therapy Programs
+              {{ end }}
+            </h3>
+            <p class="tile-description">
+              {{ if eq .Site.Language.Lang "de" }}
+                Therapeutische Musik-Sessions in Krankenhäusern und Pflegeheimen. Heilung und Trost durch die Kraft der Musik.
+              {{ else if eq .Site.Language.Lang "fr" }}
+                Séances de musique thérapeutique dans hôpitaux et maisons de soins. Guérison et réconfort par le pouvoir de la musique.
+              {{ else if eq .Site.Language.Lang "zh" }}
+                在医院和护理机构举办治疗性音乐活动。通过音乐的力量带来治愈和安慰。
+              {{ else if eq .Site.Language.Lang "zh-tw" }}
+                在醫院和護理機構舉辦治療性音樂活動。通過音樂的力量帶來治癒和安慰。
+              {{ else }}
+                Therapeutic music sessions in hospitals and care facilities. Healing and comfort through music's power.
+              {{ end }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Youth Orchestra Support -->
+        <div class="tile">
+          <div class="tile-image">
+            {{ if eq .Site.Language.Lang "de" }}
+              Jugend
+            {{ else if eq .Site.Language.Lang "fr" }}
+              Jeunesse
+            {{ else if eq .Site.Language.Lang "zh" }}
+              青年乐团
+            {{ else if eq .Site.Language.Lang "zh-tw" }}
+              青年樂團
+            {{ else }}
+              Youth
+            {{ end }}
+          </div>
+          <div class="tile-content">
+            <h3 class="tile-title">
+              {{ if eq .Site.Language.Lang "de" }}
+                Jugendorchester-Förderung
+              {{ else if eq .Site.Language.Lang "fr" }}
+                Soutien aux Orchestres de Jeunes
+              {{ else if eq .Site.Language.Lang "zh" }}
+                青年管弦乐团支持
+              {{ else if eq .Site.Language.Lang "zh-tw" }}
+                青年管弦樂團支持
+              {{ else }}
+                Youth Orchestra Support
+              {{ end }}
+            </h3>
+            <p class="tile-description">
+              {{ if eq .Site.Language.Lang "de" }}
+                Stipendien und Mentoring für talentierte junge Musiker. Investition in die nächste Generation von Künstlern.
+              {{ else if eq .Site.Language.Lang "fr" }}
+                Bourses et mentorat pour jeunes musiciens talentueux. Investissement dans la prochaine génération d'artistes.
+              {{ else if eq .Site.Language.Lang "zh" }}
+                为有才华的年轻音乐家提供奖学金和指导。投资于下一代艺术家。
+              {{ else if eq .Site.Language.Lang "zh-tw" }}
+                為有才華的年輕音樂家提供獎學金和指導。投資於下一代藝術家。
+              {{ else }}
+                Scholarships and mentoring for talented young musicians. Investing in the next generation of artists.
+              {{ end }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Refugee Music Program -->
+        <div class="tile">
+          <div class="tile-image">
+            {{ if eq .Site.Language.Lang "de" }}
+              Hoffnung
+            {{ else if eq .Site.Language.Lang "fr" }}
+              Espoir
+            {{ else if eq .Site.Language.Lang "zh" }}
+              希望
+            {{ else if eq .Site.Language.Lang "zh-tw" }}
+              希望
+            {{ else }}
+              Hope
+            {{ end }}
+          </div>
+          <div class="tile-content">
+            <h3 class="tile-title">
+              {{ if eq .Site.Language.Lang "de" }}
+                Musik für Flüchtlinge
+              {{ else if eq .Site.Language.Lang "fr" }}
+                Musique pour Réfugiés
+              {{ else if eq .Site.Language.Lang "zh" }}
+                难民音乐项目
+              {{ else if eq .Site.Language.Lang "zh-tw" }}
+                難民音樂項目
+              {{ else }}
+                Refugee Music Program
+              {{ end }}
+            </h3>
+            <p class="tile-description">
+              {{ if eq .Site.Language.Lang "de" }}
+                Musikworkshops und Konzerte für Flüchtlingsgemeinschaften. Musik als universelle Sprache der Hoffnung und Integration.
+              {{ else if eq .Site.Language.Lang "fr" }}
+                Ateliers et concerts pour communautés de réfugiés. La musique comme langue universelle d'espoir et d'intégration.
+              {{ else if eq .Site.Language.Lang "zh" }}
+                为难民社区举办音乐工作坊和音乐会。音乐作为希望和融合的通用语言。
+              {{ else if eq .Site.Language.Lang "zh-tw" }}
+                為難民社區舉辦音樂工作坊和音樂會。音樂作為希望和融合的通用語言。
+              {{ else }}
+                Music workshops and concerts for refugee communities. Music as universal language of hope and integration.
+              {{ end }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}

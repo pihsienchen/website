@@ -1,0 +1,165 @@
+{{ define "main" }}
+<div class="recordings-container">
+  <div class="container">
+    <header class="page-header">
+      <h1 class="page-title">{{ .Title }}</h1>
+      <p class="page-description">{{ .Description }}</p>
+    </header>
+
+    <div class="recordings-intro">
+      <p>
+        {{ if eq .Site.Language.Lang "de" }}
+          Entdecken Sie Pi-hsien Chens umfassendes Repertoire, das sich über sechs Jahrhunderte der Musikgeschichte erstreckt. Von barocken Meisterwerken bis hin zu zeitgenössischen Kompositionen zeigt jede Aufnahme die tiefe musikalische Sensibilität und technische Exzellenz, die ihre Interpretationen auszeichnet.
+        {{ else if eq .Site.Language.Lang "fr" }}
+          Découvrez le vaste répertoire de Pi-hsien Chen, s'étendant sur six siècles d'histoire musicale. Des chefs-d'œuvre baroques aux compositions contemporaines, chaque enregistrement révèle la profonde sensibilité musicale et l'excellence technique qui caractérisent ses interprétations.
+        {{ else if eq .Site.Language.Lang "zh" }}
+          探索陈必先涵盖六个世纪音乐史的广泛曲目。从巴洛克杰作到当代作品，每一首录音都展现了她诠释作品时深刻的音乐敏感性和技术卓越性。
+        {{ else if eq .Site.Language.Lang "zh-tw" }}
+          探索陳必先涵蓋六個世紀音樂史的廣泛曲目。從巴洛克傑作到當代作品，每一首錄音都展現了她詮釋作品時深刻的音樂敏感性和技術卓越性。
+        {{ else }}
+          Explore Pi-hsien Chen's extensive repertoire spanning six centuries of musical history. From Baroque masterpieces to contemporary compositions, each recording reveals the profound musical sensitivity and technical excellence that characterizes her interpretations.
+        {{ end }}
+      </p>
+    </div>
+
+    {{ with .Site.Data.recordings }}
+      {{ if .categories }}
+        <div class="categories-section">
+          <h2 class="section-title">
+            {{ if eq $.Site.Language.Lang "de" }}
+              Nach Epochen Durchsuchen
+            {{ else if eq $.Site.Language.Lang "fr" }}
+              Parcourir par Époque
+            {{ else if eq $.Site.Language.Lang "zh" }}
+              按时期浏览
+            {{ else if eq $.Site.Language.Lang "zh-tw" }}
+              按時期瀏覽
+            {{ else }}
+              Browse by Period
+            {{ end }}
+          </h2>
+          
+          <div class="category-grid">
+            {{ range $key, $category := .categories }}
+              {{ $categoryRecordings := slice }}
+              {{ range $recordingKey, $recording := $.Site.Data.recordings.recordings }}
+                {{ if and (eq $recording.category $key) $recording.featured }}
+                  {{ $categoryRecordings = $categoryRecordings | append $recording }}
+                {{ end }}
+              {{ end }}
+              {{ if $categoryRecordings }}
+                <div class="category-card">
+                  <h3 class="category-title">{{ $category.name }}</h3>
+                  <p class="category-period">{{ $category.period }}</p>
+                  <div class="category-composers">
+                    {{ delimit $category.composers ", " }}
+                  </div>
+                  <div class="category-recordings">
+                    {{ range first 3 $categoryRecordings }}
+                      <div class="recording-item">
+                        <strong>{{ .composer }}</strong>: {{ .title }}
+                      </div>
+                    {{ end }}
+                  </div>
+                </div>
+              {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      {{ end }}
+
+      <div class="composers-section">
+        <h2 class="section-title">
+          {{ if eq .Site.Language.Lang "de" }}
+            Nach Komponisten Durchsuchen
+          {{ else if eq .Site.Language.Lang "fr" }}
+            Parcourir par Compositeur
+          {{ else if eq .Site.Language.Lang "zh" }}
+            按作曲家浏览
+          {{ else if eq .Site.Language.Lang "zh-tw" }}
+            按作曲家瀏覽
+          {{ else }}
+            Browse by Composer
+          {{ end }}
+        </h2>
+        
+        <div class="tile-grid">
+          {{ $uniqueComposers := slice }}
+          {{ range $recordingKey, $recording := .recordings }}
+            {{ if not (in $uniqueComposers $recording.composer) }}
+              {{ $uniqueComposers = $uniqueComposers | append $recording.composer }}
+            {{ end }}
+          {{ end }}
+          
+          {{ range $uniqueComposers }}
+            {{ $composer := . }}
+            {{ $composerSlug := . | lower | replaceRE "[^a-z0-9]+" "-" | replaceRE "^-|-$" "" }}
+            {{ $composerRecordings := slice }}
+            {{ range $recordingKey, $recording := $.Site.Data.recordings.recordings }}
+              {{ if eq $recording.composer $composer }}
+                {{ $composerRecordings = $composerRecordings | append $recording }}
+              {{ end }}
+            {{ end }}
+            
+            <a href="{{ printf "recordings/%s" $composerSlug | relLangURL }}" class="tile">
+              <div class="tile-image">
+                {{ if eq $.Site.Language.Lang "zh" }}
+                  {{ if eq $composer "Johann Sebastian Bach" }}巴赫
+                  {{ else if eq $composer "Wolfgang Amadeus Mozart" }}莫扎特
+                  {{ else if eq $composer "Frédéric Chopin" }}肖邦
+                  {{ else if eq $composer "Claude Debussy" }}德彪西
+                  {{ else if eq $composer "Johannes Brahms" }}勃拉姆斯
+                  {{ else if eq $composer "Sergei Rachmaninoff" }}拉赫玛尼诺夫
+                  {{ else }}{{ $composer }}{{ end }}
+                {{ else if eq $.Site.Language.Lang "zh-tw" }}
+                  {{ if eq $composer "Johann Sebastian Bach" }}巴赫
+                  {{ else if eq $composer "Wolfgang Amadeus Mozart" }}莫札特
+                  {{ else if eq $composer "Frédéric Chopin" }}蕭邦
+                  {{ else if eq $composer "Claude Debussy" }}德布西
+                  {{ else if eq $composer "Johannes Brahms" }}布拉姆斯
+                  {{ else if eq $composer "Sergei Rachmaninoff" }}拉赫瑪尼諾夫
+                  {{ else }}{{ $composer }}{{ end }}
+                {{ else }}
+                  {{ $composer }}
+                {{ end }}
+              </div>
+              <div class="tile-content">
+                <h3 class="tile-title">{{ $composer }}</h3>
+                <p class="tile-description">
+                  {{ $recordingCount := len $composerRecordings }}
+                  {{ if eq $.Site.Language.Lang "de" }}
+                    {{ $recordingCount }} Aufnahmen verfügbar
+                  {{ else if eq $.Site.Language.Lang "fr" }}
+                    {{ $recordingCount }} enregistrements disponibles
+                  {{ else if eq $.Site.Language.Lang "zh" }}
+                    {{ $recordingCount }} 个录音
+                  {{ else if eq $.Site.Language.Lang "zh-tw" }}
+                    {{ $recordingCount }} 個錄音
+                  {{ else }}
+                    {{ $recordingCount }} recordings available
+                  {{ end }}
+                </p>
+                <div class="tile-featured">
+                  {{ $featuredRecordings := slice }}
+                  {{ range $composerRecordings }}
+                    {{ if .featured }}
+                      {{ $featuredRecordings = $featuredRecordings | append . }}
+                    {{ end }}
+                  {{ end }}
+                  {{ range first 2 $featuredRecordings }}
+                    <div class="featured-work">{{ .title }}</div>
+                  {{ end }}
+                </div>
+              </div>
+            </a>
+          {{ end }}
+        </div>
+      </div>
+    {{ end }}
+
+    <div class="page-body">
+      {{ .Content }}
+    </div>
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,112 @@
+# Complete Recording Catalog
+# This file contains metadata for all audio recordings
+
+featured_recordings:
+  - chopin-nocturne-op9-no2
+  - bach-goldberg-aria
+  - debussy-clair-de-lune
+
+recordings:
+  chopin-nocturne-op9-no2:
+    id: "chopin-nocturne-op9-no2"
+    title: "Nocturne in E-flat major, Op. 9, No. 2"
+    composer: "Frédéric Chopin"
+    year: 2022
+    duration: "4:32"
+    album: "Complete Nocturnes"
+    category: "romantic"
+    files:
+      mp3: "/audio/chopin-nocturne-op9-no2.mp3"
+      ogg: "/audio/chopin-nocturne-op9-no2.ogg"
+    download_enabled: true
+    featured: true
+    description: "Recorded live at Vienna Musikverein, this interpretation captures the intimate poetry of Chopin's most beloved nocturne."
+
+  bach-goldberg-aria:
+    id: "bach-goldberg-aria"
+    title: "Goldberg Variations - Aria"
+    composer: "Johann Sebastian Bach"
+    year: 2020
+    duration: "4:23"
+    album: "Goldberg Variations"
+    category: "baroque"
+    files:
+      mp3: "/audio/bach-goldberg-aria.mp3"
+      ogg: "/audio/bach-goldberg-aria.ogg"
+    download_enabled: true
+    featured: true
+    description: "Opening aria from Bach's monumental Goldberg Variations, recorded at Abbey Road Studios."
+
+  debussy-clair-de-lune:
+    id: "debussy-clair-de-lune"
+    title: "Clair de Lune"
+    composer: "Claude Debussy"
+    year: 2021
+    duration: "5:15"
+    album: "Images and Preludes"
+    category: "impressionist"
+    files:
+      mp3: "/audio/debussy-clair-de-lune.mp3"
+      ogg: "/audio/debussy-clair-de-lune.ogg"
+    download_enabled: true
+    featured: true
+    description: "Debussy's most famous piece, capturing moonlight through music with impressionist harmonies."
+
+  brahms-concerto-2-mvt1:
+    id: "brahms-concerto-2-mvt1"
+    title: "Piano Concerto No. 2 - Movement I"
+    composer: "Johannes Brahms"
+    year: 2021
+    duration: "18:45"
+    album: "Brahms Concerto No. 2"
+    category: "romantic"
+    type: "concerto"
+    orchestra: "Vienna Philharmonic"
+    conductor: "Placeholder Conductor"
+    files:
+      mp3: "/audio/brahms-concerto-2-mvt1.mp3"
+      ogg: "/audio/brahms-concerto-2-mvt1.ogg"
+    download_enabled: true
+    featured: false
+    description: "Opening movement of Brahms' monumental Second Piano Concerto with Vienna Philharmonic."
+
+  chopin-mazurka-op7-no1:
+    id: "chopin-mazurka-op7-no1" 
+    title: "Mazurka in B-flat major, Op. 7, No. 1"
+    composer: "Frédéric Chopin"
+    year: 2023
+    duration: "2:18"
+    album: "Complete Mazurkas"
+    category: "romantic"
+    files:
+      mp3: "/audio/chopin-mazurka-op7-no1.mp3"
+      ogg: "/audio/chopin-mazurka-op7-no1.ogg"
+    download_enabled: true
+    featured: false
+    description: "Polish dance rhythms and harmonies in Chopin's distinctive mazurka style."
+
+categories:
+  baroque:
+    name: "Baroque"
+    period: "1600-1750"
+    composers: ["Bach", "Handel", "Scarlatti"]
+  classical:
+    name: "Classical"  
+    period: "1750-1820"
+    composers: ["Mozart", "Haydn", "Beethoven"]
+  romantic:
+    name: "Romantic"
+    period: "1820-1900" 
+    composers: ["Chopin", "Schumann", "Brahms", "Liszt"]
+  impressionist:
+    name: "Impressionist"
+    period: "1890-1925"
+    composers: ["Debussy", "Ravel"]
+  modern:
+    name: "Modern"
+    period: "1900-1950"
+    composers: ["Bartók", "Prokofiev", "Stravinsky"]
+  contemporary:
+    name: "Contemporary"
+    period: "1950-present"
+    composers: ["Adams", "Glass", "Ligeti"]
