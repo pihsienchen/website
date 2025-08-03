@@ -1,29 +1,199 @@
 baseURL = 'https://pi-hsien.org/'
 languageCode = 'en-us'
 title = 'Pi-hsien Chen - Official Website'
-theme = 'ananke'
+defaultContentLanguage = 'en'
+
+# Enable emoji support
+enableEmoji = true
+# Enable syntax highlighting
+pygmentsUseClasses = true
+# Enable Git info for content
+enableGitInfo = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # Allow HTML in markdown
 
 [languages]
   [languages.en]
     title = "Pi-hsien Chen"
     weight = 1
     languageName = "English"
+    languageFlag = "🇺🇸"
+    contentDir = "content/en"
+    [languages.en.params]
+      description = "Official website showcasing the musical legacy of internationally acclaimed pianist Pi-hsien Chen"
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        name = "Biography"
+        url = "/biography/"
+        weight = 20
+      [[languages.en.menu.main]]
+        name = "Recordings"
+        url = "/recordings/"
+        weight = 30
+      [[languages.en.menu.main]]
+        name = "Media"
+        url = "/media/"
+        weight = 35
+      [[languages.en.menu.main]]
+        name = "Philanthropy"
+        url = "/philanthropy/"
+        weight = 40
+      [[languages.en.menu.main]]
+        name = "Shop"
+        url = "/shop/"
+        weight = 50
+
   [languages.de]
     title = "Pi-hsien Chen"
     weight = 2
     languageName = "Deutsch"
+    languageFlag = "🇩🇪"
+    contentDir = "content/de"
+    [languages.de.params]
+      description = "Offizielle Website des international anerkannten Pianisten Pi-hsien Chen"
+    [languages.de.menu]
+      [[languages.de.menu.main]]
+        name = "Biographie"
+        url = "/de/biography/"
+        weight = 20
+      [[languages.de.menu.main]]
+        name = "Aufnahmen"
+        url = "/de/recordings/"
+        weight = 30
+      [[languages.de.menu.main]]
+        name = "Medien"
+        url = "/de/media/"
+        weight = 35
+      [[languages.de.menu.main]]
+        name = "Philanthropie"
+        url = "/de/philanthropy/"
+        weight = 40
+      [[languages.de.menu.main]]
+        name = "Shop"
+        url = "/de/shop/"
+        weight = 50
+
   [languages.fr]
     title = "Pi-hsien Chen"
     weight = 3
     languageName = "Français"
+    languageFlag = "🇫🇷"
+    contentDir = "content/fr"
+    [languages.fr.params]
+      description = "Site officiel du pianiste de renommée internationale Pi-hsien Chen"
+    [languages.fr.menu]
+      [[languages.fr.menu.main]]
+        name = "Biographie"
+        url = "/fr/biography/"
+        weight = 20
+      [[languages.fr.menu.main]]
+        name = "Enregistrements"
+        url = "/fr/recordings/"
+        weight = 30
+      [[languages.fr.menu.main]]
+        name = "Médias"
+        url = "/fr/media/"
+        weight = 35
+      [[languages.fr.menu.main]]
+        name = "Philanthropie"
+        url = "/fr/philanthropy/"
+        weight = 40
+      [[languages.fr.menu.main]]
+        name = "Boutique"
+        url = "/fr/shop/"
+        weight = 50
+
   [languages.zh]
     title = "陈必先"
     weight = 4
     languageName = "中文"
+    languageFlag = "🇨🇳"
+    contentDir = "content/zh"
+    [languages.zh.params]
+      description = "国际知名钢琴家陈必先官方网站"
+    [languages.zh.menu]
+      [[languages.zh.menu.main]]
+        name = "传记"
+        url = "/zh/biography/"
+        weight = 20
+      [[languages.zh.menu.main]]
+        name = "录音作品"
+        url = "/zh/recordings/"
+        weight = 30
+      [[languages.zh.menu.main]]
+        name = "媒体"
+        url = "/zh/media/"
+        weight = 35
+      [[languages.zh.menu.main]]
+        name = "慈善事业"
+        url = "/zh/philanthropy/"
+        weight = 40
+      [[languages.zh.menu.main]]
+        name = "商店"
+        url = "/zh/shop/"
+        weight = 50
+
   [languages.zh-tw]
     title = "陳必先"
     weight = 5
     languageName = "繁體中文"
+    languageFlag = "🇹🇼"
+    contentDir = "content/zh-tw"
+    [languages.zh-tw.params]
+      description = "國際知名鋼琴家陳必先官方網站"
+    [languages.zh-tw.menu]
+      [[languages.zh-tw.menu.main]]
+        name = "傳記"
+        url = "/zh-tw/biography/"
+        weight = 20
+      [[languages.zh-tw.menu.main]]
+        name = "錄音作品"
+        url = "/zh-tw/recordings/"
+        weight = 30
+      [[languages.zh-tw.menu.main]]
+        name = "媒體"
+        url = "/zh-tw/media/"
+        weight = 35
+      [[languages.zh-tw.menu.main]]
+        name = "慈善事業"
+        url = "/zh-tw/philanthropy/"
+        weight = 40
+      [[languages.zh-tw.menu.main]]
+        name = "商店"
+        url = "/zh-tw/shop/"
+        weight = 50
 
 [params]
-  description = "Official website of Pi-hsien Chen"
+  # Site-wide parameters
+  favicon = "/favicon.ico"
+  show_reading_time = false
+  show_sharing_links = true
+  
+  # Audio player settings
+  enable_audio_player = true
+  audio_player_position = "bottom-left"
+  
+  # Analytics
+  google_analytics = ""  # Add your GA4 tracking ID later
+  
+  # Social media (add as needed)
+  twitter = ""
+  facebook = ""
+  youtube = ""
+  instagram = ""
+
+# Custom output formats for audio sitemap (disabled until template is created)
+# [outputFormats]
+#   [outputFormats.AudioRSS]
+#     mediaType = "application/rss+xml"
+#     baseName = "audio"
+#     isPlainText = false
+#     rel = "alternate"
+#     isHTML = false
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
