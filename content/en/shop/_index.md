@@ -7,4 +7,4 @@ layout: "single"
 
 # Shop
 
-Coming soon - Official Pi-hsien Chen merchandise and recordings will be available here.
+Coming soon - Official Pi-hsien Chen recordings will be available here.

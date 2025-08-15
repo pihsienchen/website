@@ -1,1 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Shop on Pi-hsien Chen</title><link>https://pi-hsien.org/de/shop/</link><description>Recent content in Shop on Pi-hsien Chen</description><generator>Hugo</generator><language>de</language><lastBuildDate/><atom:link href="https://pi-hsien.org/de/shop/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shop on Pi-hsien Chen</title>
+    <link>http://localhost:1313/de/shop/</link>
+    <description>Recent content in Shop on Pi-hsien Chen</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="http://localhost:1313/de/shop/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

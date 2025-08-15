@@ -41,190 +41,180 @@
     </div>
   </section>
 
-  <!-- Next Events Section -->
-  <section class="events-section" id="events">
-    <div class="container">
-      <h2 class="section-title">
-        {{ if eq .Site.Language.Lang "de" }}
-          Kommende Auftritte
-        {{ else if eq .Site.Language.Lang "fr" }}
-          Prochains Concerts
-        {{ else if eq .Site.Language.Lang "zh" }}
-          即将举行的音乐会
-        {{ else if eq .Site.Language.Lang "zh-tw" }}
-          即將舉行的音樂會
-        {{ else }}
-          Upcoming Concerts
-        {{ end }}
-      </h2>
-      
-      <div class="events-grid">
-        {{ if .Site.Data.events }}
-          {{ range .Site.Data.events.upcoming }}
-            <div class="event-tile">
-              <div class="event-date">
-                <span class="event-day">{{ dateFormat "02" .date }}</span>
-                <span class="event-month">{{ dateFormat "Jan" .date }}</span>
-                <span class="event-year">{{ dateFormat "2006" .date }}</span>
-              </div>
-              <div class="event-details">
-                <h3 class="event-venue">{{ index .venue $.Site.Language.Lang }}</h3>
-                <p class="event-location">{{ index .location $.Site.Language.Lang }}</p>
-                <p class="event-program">{{ index .program $.Site.Language.Lang }}</p>
-              </div>
-              {{ if .booking_url }}
-                <div class="event-booking">
-                  <a href="{{ .booking_url }}" class="booking-button" target="_blank">
-                    {{ if eq $.Site.Language.Lang "de" }}
-                      Tickets
-                    {{ else if eq $.Site.Language.Lang "fr" }}
-                      Billets
-                    {{ else if eq $.Site.Language.Lang "zh" }}
-                      购票
-                    {{ else if eq $.Site.Language.Lang "zh-tw" }}
-                      購票
-                    {{ else }}
-                      Book Tickets
-                    {{ end }}
-                  </a>
-                </div>
-              {{ end }}
+  <!-- Preview Sections -->
+  <section class="preview-sections" id="preview">
+    <!-- Biography Section -->
+    <a href="{{ "biography" | relLangURL }}" class="preview-section">
+      <div class="section-info">
+        <h2>
+          {{ if eq .Site.Language.Lang "de" }}
+            Biografie
+          {{ else if eq .Site.Language.Lang "fr" }}
+            Biographie
+          {{ else if eq .Site.Language.Lang "zh" }}
+            传记
+          {{ else if eq .Site.Language.Lang "zh-tw" }}
+            傳記
+          {{ else }}
+            Biography
+          {{ end }}
+        </h2>
+        <p>
+          {{ if eq .Site.Language.Lang "de" }}
+            Entdecken Sie die musikalische Reise und künstlerische Entwicklung von Pi-hsien Chen.
+          {{ else if eq .Site.Language.Lang "fr" }}
+            Découvrez le voyage musical et le développement artistique de Pi-hsien Chen.
+          {{ else if eq .Site.Language.Lang "zh" }}
+            探索陈丕先的音乐之旅和艺术发展历程。
+          {{ else if eq .Site.Language.Lang "zh-tw" }}
+            探索陳丕先的音樂之旅和藝術發展歷程。
+          {{ else }}
+            Explore the musical journey and artistic development of Pi-hsien Chen.
+          {{ end }}
+        </p>
+      </div>
+      <div class="section-gallery">
+        <div class="gallery-container">
+          {{ $page := . }}
+          {{ range $i := (seq 16) }}
+            <div class="gallery-item">
+              <img src="/images/placeholder.png" alt="Biography placeholder">
             </div>
           {{ end }}
-        {{ else }}
-          <!-- Placeholder events -->
-          <div class="event-tile">
-            <div class="event-date">
-              <span class="event-day">15</span>
-              <span class="event-month">Mar</span>
-              <span class="event-year">2025</span>
-            </div>
-            <div class="event-details">
-              <h3 class="event-venue">
-                {{ if eq .Site.Language.Lang "de" }}
-                  Musikverein Wien
-                {{ else if eq .Site.Language.Lang "fr" }}
-                  Salle Pleyel
-                {{ else if eq .Site.Language.Lang "zh" }}
-                  维也纳音乐厅
-                {{ else if eq .Site.Language.Lang "zh-tw" }}
-                  維也納音樂廳
-                {{ else }}
-                  Carnegie Hall
-                {{ end }}
-              </h3>
-              <p class="event-location">
-                {{ if eq .Site.Language.Lang "de" }}
-                  Wien, Österreich
-                {{ else if eq .Site.Language.Lang "fr" }}
-                  Paris, France
-                {{ else if eq .Site.Language.Lang "zh" }}
-                  维也纳，奥地利
-                {{ else if eq .Site.Language.Lang "zh-tw" }}
-                  維也納，奧地利
-                {{ else }}
-                  New York, USA
-                {{ end }}
-              </p>
-              <p class="event-program">
-                {{ if eq .Site.Language.Lang "de" }}
-                  Chopin: Nocturnes & Balladen
-                {{ else if eq .Site.Language.Lang "fr" }}
-                  Chopin: Nocturnes et Ballades
-                {{ else if eq .Site.Language.Lang "zh" }}
-                  肖邦：夜曲与叙事曲
-                {{ else if eq .Site.Language.Lang "zh-tw" }}
-                  蕭邦：夜曲與敘事曲
-                {{ else }}
-                  Chopin: Nocturnes & Ballades
-                {{ end }}
-              </p>
-            </div>
-            <div class="event-booking">
-              <a href="#" class="booking-button">
-                {{ if eq .Site.Language.Lang "de" }}
-                  Tickets
-                {{ else if eq .Site.Language.Lang "fr" }}
-                  Billets
-                {{ else if eq .Site.Language.Lang "zh" }}
-                  购票
-                {{ else if eq .Site.Language.Lang "zh-tw" }}
-                  購票
-                {{ else }}
-                  Book Tickets
-                {{ end }}
-              </a>
-            </div>
-          </div>
-          
-          <div class="event-tile">
-            <div class="event-date">
-              <span class="event-day">28</span>
-              <span class="event-month">Apr</span>
-              <span class="event-year">2025</span>
-            </div>
-            <div class="event-details">
-              <h3 class="event-venue">
-                {{ if eq .Site.Language.Lang "de" }}
-                  Berliner Philharmonie
-                {{ else if eq .Site.Language.Lang "fr" }}
-                  Philharmonie de Paris
-                {{ else if eq .Site.Language.Lang "zh" }}
-                  柏林爱乐厅
-                {{ else if eq .Site.Language.Lang "zh-tw" }}
-                  柏林愛樂廳
-                {{ else }}
-                  Royal Festival Hall
-                {{ end }}
-              </h3>
-              <p class="event-location">
-                {{ if eq .Site.Language.Lang "de" }}
-                  Berlin, Deutschland
-                {{ else if eq .Site.Language.Lang "fr" }}
-                  Paris, France
-                {{ else if eq .Site.Language.Lang "zh" }}
-                  柏林，德国
-                {{ else if eq .Site.Language.Lang "zh-tw" }}
-                  柏林，德國
-                {{ else }}
-                  London, UK
-                {{ end }}
-              </p>
-              <p class="event-program">
-                {{ if eq .Site.Language.Lang "de" }}
-                  Brahms: Klavierkonzert Nr. 2
-                {{ else if eq .Site.Language.Lang "fr" }}
-                  Brahms: Concerto pour piano n° 2
-                {{ else if eq .Site.Language.Lang "zh" }}
-                  勃拉姆斯：第二钢琴协奏曲
-                {{ else if eq .Site.Language.Lang "zh-tw" }}
-                  布拉姆斯：第二鋼琴協奏曲
-                {{ else }}
-                  Brahms: Piano Concerto No. 2
-                {{ end }}
-              </p>
-            </div>
-            <div class="event-booking">
-              <a href="#" class="booking-button">
-                {{ if eq .Site.Language.Lang "de" }}
-                  Tickets
-                {{ else if eq .Site.Language.Lang "fr" }}
-                  Billets
-                {{ else if eq .Site.Language.Lang "zh" }}
-                  购票
-                {{ else if eq .Site.Language.Lang "zh-tw" }}
-                  購票
-                {{ else }}
-                  Book Tickets
-                {{ end }}
-              </a>
-            </div>
-          </div>
-        {{ end }}
+        </div>
       </div>
-    </div>
+    </a>
+
+    <!-- Recordings Section -->
+    <a href="{{ "recordings" | relLangURL }}" class="preview-section">
+      <div class="section-info">
+        <h2>
+          {{ if eq .Site.Language.Lang "de" }}
+            Aufnahmen
+          {{ else if eq .Site.Language.Lang "fr" }}
+            Enregistrements
+          {{ else if eq .Site.Language.Lang "zh" }}
+            录音
+          {{ else if eq .Site.Language.Lang "zh-tw" }}
+            錄音
+          {{ else }}
+            Recordings
+          {{ end }}
+        </h2>
+        <p>
+          {{ if eq .Site.Language.Lang "de" }}
+            Durchstöbern Sie das komplette Aufnahmearchiv mit Werken der großen Komponisten.
+          {{ else if eq .Site.Language.Lang "fr" }}
+            Parcourez les archives d'enregistrements complets avec des œuvres des grands compositeurs.
+          {{ else if eq .Site.Language.Lang "zh" }}
+            浏览完整的录音档案，包含伟大作曲家的作品。
+          {{ else if eq .Site.Language.Lang "zh-tw" }}
+            瀏覽完整的錄音檔案，包含偉大作曲家的作品。
+          {{ else }}
+            Browse the complete recording archive featuring works by great composers.
+          {{ end }}
+        </p>
+      </div>
+      <div class="section-gallery">
+        <div class="gallery-container">
+          {{ $page := . }}
+          {{ range $i := (seq 16) }}
+            <div class="gallery-item">
+              <img src="/images/placeholder.png" alt="Recordings placeholder">
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </a>
+
+    <!-- Masterclasses Section -->
+    <a href="{{ "masterclasses" | relLangURL }}" class="preview-section">
+      <div class="section-info">
+        <h2>
+          {{ if eq .Site.Language.Lang "de" }}
+            Medien
+          {{ else if eq .Site.Language.Lang "fr" }}
+            Médias
+          {{ else if eq .Site.Language.Lang "zh" }}
+            媒体
+          {{ else if eq .Site.Language.Lang "zh-tw" }}
+            媒體
+          {{ else }}
+            Masterclasses
+          {{ end }}
+        </h2>
+        <p>
+          {{ if eq .Site.Language.Lang "de" }}
+            Professionelle Fotos und Pressematerialien für Medien und Veranstalter.
+          {{ else if eq .Site.Language.Lang "fr" }}
+            Photos professionnelles et matériel de presse pour les médias et organisateurs.
+          {{ else if eq .Site.Language.Lang "zh" }}
+            为媒体和主办方提供的专业照片和新闻资料。
+          {{ else if eq .Site.Language.Lang "zh-tw" }}
+            為媒體和主辦方提供的專業照片和新聞資料。
+          {{ else }}
+            Educational resources and masterclass materials featuring interpretations by Pi-hsien Chen.
+          {{ end }}
+        </p>
+      </div>
+      <div class="section-gallery">
+        <div class="gallery-container">
+          {{ $page := . }}
+          {{ range $i := (seq 16) }}
+            <div class="gallery-item">
+              <img src="/images/placeholder.png" alt="Masterclasses placeholder">
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </a>
+
+    <!-- Philanthropy Section -->
+    <a href="{{ "philanthropy" | relLangURL }}" class="preview-section">
+      <div class="section-info">
+        <h2>
+          {{ if eq .Site.Language.Lang "de" }}
+            Philanthropie
+          {{ else if eq .Site.Language.Lang "fr" }}
+            Philanthropie
+          {{ else if eq .Site.Language.Lang "zh" }}
+            慈善事业
+          {{ else if eq .Site.Language.Lang "zh-tw" }}
+            慈善事業
+          {{ else }}
+            Philanthropy
+          {{ end }}
+        </h2>
+        <p>
+          {{ if eq .Site.Language.Lang "de" }}
+            Musikausbildung und humanitäre Initiativen zur Förderung der nächsten Generation.
+          {{ else if eq .Site.Language.Lang "fr" }}
+            Éducation musicale et initiatives humanitaires pour soutenir la prochaine génération.
+          {{ else if eq .Site.Language.Lang "zh" }}
+            音乐教育和人道主义倡议，支持下一代的发展。
+          {{ else if eq .Site.Language.Lang "zh-tw" }}
+            音樂教育和人道主義倡議，支持下一代的發展。
+          {{ else }}
+            Music education and humanitarian initiatives supporting the next generation.
+          {{ end }}
+        </p>
+      </div>
+      <div class="section-gallery">
+        <div class="gallery-container">
+          {{ $page := . }}
+          {{ range $i := (seq 16) }}
+            <div class="gallery-item">
+              <img src="/images/placeholder.png" alt="Philanthropy placeholder">
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </a>
   </section>
 </div>
+
+<!-- Footer -->
+{{ partial "site-footer.html" . }}
 
 <!-- Sticky Navigation JavaScript -->
 <script>
@@ -240,10 +230,143 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Smooth scroll to events section
+// Smooth scroll to preview section
 document.querySelector('.scroll-indicator').addEventListener('click', function() {
-    document.getElementById('events').scrollIntoView({
+    document.getElementById('preview').scrollIntoView({
         behavior: 'smooth'
+    });
+});
+
+// Gallery scrolling functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const galleries = document.querySelectorAll('.gallery-container');
+    
+    galleries.forEach(gallery => {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let dragDistance = 0;
+        let dragStarted = false;
+        
+        // Improved mouse wheel scrolling for high-speed mice
+        gallery.addEventListener('wheel', function(e) {
+            e.preventDefault();
+            
+            // Direct mapping of wheel delta for consistent behavior
+            // Handle both regular scroll and high-speed Logitech mice
+            let scrollAmount;
+            
+            // Detect if this is a high-speed scroll event
+            if (Math.abs(e.deltaY) > 100) {
+                // High-speed scroll: use larger multiplier for smooth fast scrolling
+                scrollAmount = (e.deltaY > 0 ? 1 : -1) * Math.min(Math.abs(e.deltaY) * 2, 800);
+            } else {
+                // Regular scroll: use standard multiplier
+                scrollAmount = e.deltaY * 3;
+            }
+            
+            // Use instant scrolling for responsiveness
+            gallery.scrollLeft += scrollAmount;
+        }, { passive: false });
+        
+        // Enhanced drag scrolling with click protection
+        gallery.addEventListener('mousedown', function(e) {
+            // Only handle left mouse button
+            if (e.button !== 0) return;
+            
+            isDown = true;
+            dragStarted = false;
+            dragDistance = 0;
+            gallery.style.cursor = 'grabbing';
+            startX = e.pageX - gallery.offsetLeft;
+            scrollLeft = gallery.scrollLeft;
+            e.preventDefault();
+        });
+        
+        gallery.addEventListener('mouseleave', function() {
+            isDown = false;
+            gallery.style.cursor = 'grab';
+        });
+        
+        gallery.addEventListener('mouseup', function(e) {
+            if (isDown) {
+                isDown = false;
+                gallery.style.cursor = 'grab';
+                
+                // If significant drag occurred, prevent any click events
+                if (dragStarted && dragDistance > 5) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                }
+            }
+        });
+        
+        gallery.addEventListener('mousemove', function(e) {
+            if (!isDown) return;
+            e.preventDefault();
+            
+            const x = e.pageX - gallery.offsetLeft;
+            const walk = (x - startX) * 2;
+            const currentDragDistance = Math.abs(walk);
+            
+            // Track total drag distance
+            if (currentDragDistance > dragDistance) {
+                dragDistance = currentDragDistance;
+            }
+            
+            // Mark as drag if moved more than threshold
+            if (dragDistance > 5) {
+                dragStarted = true;
+            }
+            
+            gallery.scrollLeft = scrollLeft - walk;
+        });
+        
+        // Prevent clicks on gallery items after drag
+        gallery.addEventListener('click', function(e) {
+            if (dragStarted && dragDistance > 5) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                return false;
+            }
+        }, true);
+        
+        // Touch events for mobile
+        gallery.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].pageX - gallery.offsetLeft;
+            scrollLeft = gallery.scrollLeft;
+            dragStarted = false;
+            dragDistance = 0;
+        });
+        
+        gallery.addEventListener('touchmove', function(e) {
+            if (!startX) return;
+            const x = e.touches[0].pageX - gallery.offsetLeft;
+            const walk = (x - startX) * 2;
+            const currentDragDistance = Math.abs(walk);
+            
+            if (currentDragDistance > dragDistance) {
+                dragDistance = currentDragDistance;
+            }
+            
+            if (dragDistance > 5) {
+                dragStarted = true;
+            }
+            
+            gallery.scrollLeft = scrollLeft - walk;
+        });
+        
+        gallery.addEventListener('touchend', function(e) {
+            if (dragStarted && dragDistance > 5) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        });
+        
+        // Set initial cursor
+        gallery.style.cursor = 'grab';
     });
 });
 </script>

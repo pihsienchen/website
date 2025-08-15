@@ -34,8 +34,8 @@ enableGitInfo = true
         url = "/recordings/"
         weight = 30
       [[languages.en.menu.main]]
-        name = "Media"
-        url = "/media/"
+        name = "Masterclasses"
+        url = "/masterclasses/"
         weight = 35
       [[languages.en.menu.main]]
         name = "Philanthropy"
@@ -65,7 +65,7 @@ enableGitInfo = true
         weight = 30
       [[languages.de.menu.main]]
         name = "Medien"
-        url = "/de/media/"
+        url = "/de/masterclasses/"
         weight = 35
       [[languages.de.menu.main]]
         name = "Philanthropie"
@@ -95,7 +95,7 @@ enableGitInfo = true
         weight = 30
       [[languages.fr.menu.main]]
         name = "Médias"
-        url = "/fr/media/"
+        url = "/fr/masterclasses/"
         weight = 35
       [[languages.fr.menu.main]]
         name = "Philanthropie"
@@ -125,7 +125,7 @@ enableGitInfo = true
         weight = 30
       [[languages.zh.menu.main]]
         name = "媒体"
-        url = "/zh/media/"
+        url = "/zh/masterclasses/"
         weight = 35
       [[languages.zh.menu.main]]
         name = "慈善事业"
@@ -155,7 +155,7 @@ enableGitInfo = true
         weight = 30
       [[languages.zh-tw.menu.main]]
         name = "媒體"
-        url = "/zh-tw/media/"
+        url = "/zh-tw/masterclasses/"
         weight = 35
       [[languages.zh-tw.menu.main]]
         name = "慈善事業"

@@ -1,0 +1,122 @@
+{{ define "main" }}
+<div class="masterclasses-container">
+  <div class="container">
+    <!-- Header -->
+    <header class="page-header">
+      <h1 class="page-title">{{ .Title }}</h1>
+      <p class="page-description">{{ .Description }}</p>
+    </header>
+
+    <!-- Introduction -->
+    <div class="masterclasses-intro">
+      <p>
+        {{ if eq .Site.Language.Lang "de" }}
+          Entdecken Sie Pi-hsien Chens umfassende Sammlung kostenloser Lernmaterialien, die Einblicke in ausgewählte Musikstücke durch detaillierte Interpretationsanleitungen und pädagogische Ressourcen bietet.
+        {{ else if eq .Site.Language.Lang "fr" }}
+          Découvrez la collection complète de matériel d'apprentissage gratuit de Pi-hsien Chen, offrant des aperçus sur des pièces musicales sélectionnées à travers des guides d'interprétation détaillés et des ressources éducatives.
+        {{ else if eq .Site.Language.Lang "zh" }}
+          探索陈必先全面的免费学习材料收藏，通过详细的诠释指南和教育资源，深入了解精选的音乐作品。
+        {{ else if eq .Site.Language.Lang "zh-tw" }}
+          探索陳必先全面的免費學習材料收藏，透過詳細的詮釋指南和教育資源，深入了解精選的音樂作品。
+        {{ else }}
+          Explore Pi-hsien Chen's comprehensive collection of free learning materials, offering insights into selected musical pieces through detailed interpretation guides and educational resources.
+        {{ end }}
+      </p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="masterclasses-content">
+      {{ .Content }}
+    </div>
+
+    <!-- Learning Categories -->
+    <div class="learning-section">
+      <h2 class="section-title">
+        {{ if eq .Site.Language.Lang "de" }}
+          Lernbereiche
+        {{ else if eq .Site.Language.Lang "fr" }}
+          Domaines d'Apprentissage
+        {{ else if eq .Site.Language.Lang "zh" }}
+          学习领域
+        {{ else if eq .Site.Language.Lang "zh-tw" }}
+          學習領域
+        {{ else }}
+          Learning Areas
+        {{ end }}
+      </h2>
+      
+      <div class="tile-grid">
+        <!-- Video Lessons -->
+        <a href="{{ "masterclasses/lessons" | relLangURL }}" class="tile">
+          <div class="tile-image">
+            <span class="tile-icon">🎥</span>
+          </div>
+          <div class="tile-content">
+            <h3 class="tile-title">
+              {{ if eq .Site.Language.Lang "de" }}
+                Video-Lektionen
+              {{ else if eq .Site.Language.Lang "fr" }}
+                Leçons Vidéo
+              {{ else if eq .Site.Language.Lang "zh" }}
+                视频课程
+              {{ else if eq .Site.Language.Lang "zh-tw" }}
+                影片課程
+              {{ else }}
+                Video Lessons
+              {{ end }}
+            </h3>
+            <p class="tile-description">
+              {{ if eq .Site.Language.Lang "de" }}
+                Ausführliche Video-Meisterkurse zu ausgewähltem Repertoire mit detaillierter Analyse
+              {{ else if eq .Site.Language.Lang "fr" }}
+                Masterclasses vidéo approfondies sur un répertoire sélectionné avec analyse détaillée
+              {{ else if eq .Site.Language.Lang "zh" }}
+                精选曲目的深度视频大师课，包含详细分析和演奏技巧
+              {{ else if eq .Site.Language.Lang "zh-tw" }}
+                精選曲目的深度影片大師課，包含詳細分析和演奏技巧
+              {{ else }}
+                In-depth video masterclasses on selected repertoire with detailed analysis
+              {{ end }}
+            </p>
+          </div>
+        </a>
+
+        <!-- Study Resources -->
+        <a href="{{ "masterclasses/resources" | relLangURL }}" class="tile">
+          <div class="tile-image">
+            <span class="tile-icon">📚</span>
+          </div>
+          <div class="tile-content">
+            <h3 class="tile-title">
+              {{ if eq .Site.Language.Lang "de" }}
+                Studienmaterialien
+              {{ else if eq .Site.Language.Lang "fr" }}
+                Ressources d'Étude
+              {{ else if eq .Site.Language.Lang "zh" }}
+                学习资源
+              {{ else if eq .Site.Language.Lang "zh-tw" }}
+                學習資源
+              {{ else }}
+                Study Resources
+              {{ end }}
+            </h3>
+            <p class="tile-description">
+              {{ if eq .Site.Language.Lang "de" }}
+                Annotierte Noten, Übungsanleitungen und ergänzende Bildungsmaterialien
+              {{ else if eq .Site.Language.Lang "fr" }}
+                Partitions annotées, guides de pratique et matériel éducatif supplémentaire
+              {{ else if eq .Site.Language.Lang "zh" }}
+                注释乐谱、练习指南和补充教育材料
+              {{ else if eq .Site.Language.Lang "zh-tw" }}
+                註釋樂譜、練習指南和補充教育材料
+              {{ else }}
+                Sheet music annotations, practice guides, and supplementary educational materials
+              {{ end }}
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
